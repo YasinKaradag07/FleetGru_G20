@@ -32,4 +32,5 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//div[@class='message']")
     public WebElement exportMessage;
 
+
 }
