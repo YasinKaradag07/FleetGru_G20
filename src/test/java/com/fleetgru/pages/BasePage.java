@@ -14,6 +14,7 @@ public abstract class BasePage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+
     @FindBy(css = "div[class='loader-mask shown']")
     @CacheLookup
     protected WebElement loaderMask;
