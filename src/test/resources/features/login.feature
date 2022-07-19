@@ -9,7 +9,7 @@ Feature: FleetGru App Login Feature
   Background:
     Given the user is on the login page
 
-    @FLT-1824
+
     Scenario Outline: user is able to login with valid credentials as a truck driver verification
 
       When the truck driver user enters username "<username>"
@@ -29,7 +29,7 @@ Feature: FleetGru App Login Feature
         | user191  |   UserUser123 |
         | user200  |   UserUser123 |
 
-@FLT-1825
+
   Scenario Outline: user is able to login with valid credentials as a store manager and sales manager verification
 
     When the sales manager or store manager user enters username "<username>"
@@ -55,7 +55,7 @@ Feature: FleetGru App Login Feature
       | salesmanager291 |   UserUser123 |
       | salesmanager300 |   UserUser123 |
 
-@FLT-1826
+
   Scenario Outline: "Invalid username or password." should be displayed for invalid
     (valid username-invalid password and invalid username-valid password) credentials
 
@@ -73,38 +73,38 @@ Feature: FleetGru App Login Feature
       |storemanager51  |  UserUser321     |
       |storemanager45  |  UserUser123     |
 
-@FLT-1827
+
   Scenario: "Please fill out this field" message should be displayed if the password or username is empty
 
       When the user does not fill username or password
       And the user clicks on login button
       Then the user should be able to see warning message on login page
 
-@FLT-1828
+
   Scenario: User land on the ‘Forgot Password’ page after clicking on the "Forgot your password?" link
 
     When the user clicks forgot password button
     Then the user should land on forgot password page
 
-@FLT-1829
+
   Scenario: User can see "Remember Me" link exists and is clickable on the login page
 
     When the user is able to see remember me link
     Then the user should be able to click checkbox
 
-@FLT-1830
+
   Scenario: User should see the password in bullet signs by default
 
       When the user enters password
       Then the user should see the password in bullet signs
 
-@FLT-1831
+
   Scenario: Verify if the ‘Enter’ key of the keyboard is working correctly on the login page.
 
     When the user enters valid credentials and hits enter key instead of clicking login button
     Then the user should be able to navigate correct page
 
- @FLT-1832
+
     Scenario Outline: All users can see their own usernames in the profile menu, after successful login, for truck driver
 
     When the truck driver user enters username "<username>"
@@ -124,7 +124,7 @@ Feature: FleetGru App Login Feature
       | user191  |   UserUser123 |
       | user200  |   UserUser123 |
 
-  @FLT-1833
+
   Scenario Outline: All users can see their own usernames in the profile menu, after successful login, for sales manager and store manager
 
     When the sales manager or store manager user enters username "<username>"
