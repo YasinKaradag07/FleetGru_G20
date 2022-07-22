@@ -45,5 +45,18 @@ public class BrowserUtils {
         Driver.getDriver().switchTo().window(newTab);
     }
 
+    /**
+     * Waits for the provided element to be visible on the page
+     *
+     * @param element
+     * @param timeToWaitInSec
+     * @return
+     */
+    public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeToWaitInSec);
+        return wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+
 
 }
