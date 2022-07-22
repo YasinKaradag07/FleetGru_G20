@@ -1,6 +1,8 @@
 package com.fleetgru.pages;
 
+import com.fleetgru.utilities.Driver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class VehiclesPage extends BasePage {
@@ -11,13 +13,13 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//input[contains(@class, 'input-widget')]")
     public WebElement pageNumber;
 
-    @FindBy(xpath = "//i[@class='fa-chevron-right hide-text']")
+    @FindBy(xpath = "//a[@data-grid-pagination-direction='next']")
     public WebElement pageForwardButton;
 
     @FindBy(xpath = "//i[@class='fa-chevron-left hide-text']")
     public WebElement pageBackwardsBtn;
 
-    @FindBy(xpath = "//*[contains(text(), 'Total of 158 records')]")
+    @FindBy(xpath = "//*[contains(text(), 'Total of ')]")
     public WebElement totalRecords;
 
     @FindBy(xpath = "//a[contains(@title,'With this button you will export')]")
@@ -31,6 +33,11 @@ public class VehiclesPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='message']")
     public WebElement exportMessage;
+
+    @FindBy(xpath = "(//div[@class='pagination pagination-centered']/label)[2]")
+    public WebElement totalPageNumber;
+
+
 
 
 }
