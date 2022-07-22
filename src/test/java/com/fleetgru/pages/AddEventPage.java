@@ -10,11 +10,13 @@ public class AddEventPage extends BasePage {
 
 
 
+
+
     @FindBy(xpath = "(//span[@class='title title-level-1'])[2]")
     public WebElement FleetTab;
 
     @FindBy(xpath = "//*[@id=\"main-menu\"]/ul/li[2]/div/div/ul/li[3]/a")
-    public WebElement Fleetvehicle;
+    public WebElement FleetVehicle;
 
     @FindBy(xpath = "//tbody[@class='grid-body']//tr")
     public List<WebElement> AllCarRow;  //to store all 25 row
