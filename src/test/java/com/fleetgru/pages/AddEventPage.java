@@ -9,9 +9,6 @@ public class AddEventPage extends BasePage {
 
 
 
-
-
-
     @FindBy(xpath = "(//span[@class='title title-level-1'])[2]")
     public WebElement FleetTab;
 
@@ -19,16 +16,13 @@ public class AddEventPage extends BasePage {
     public WebElement FleetVehicle;
 
     @FindBy(xpath = "//tbody[@class='grid-body']//tr")
-    public List<WebElement> AllCarRow;  //to store all 25 row
+    public List<WebElement> AllCarRow;  //to store all 25 rows
 
-    @FindBy(xpath = "//a[text()='Add Event']")
-    public WebElement AddEvent;
 
     @FindBy(xpath = "//*[@aria-describedby='ui-id-1']")
     public WebElement AddEventPopUp;
 
-    @FindBy(xpath = "//*[@id='ui-id-2']")
-    public WebElement AddEventPopUpTitle;
+
 
     @FindBy(xpath = "//*[@class='control-label wrap']//em[contains(text(),'*')]/parent::*")
     public List<WebElement> CompulsoryField;
@@ -37,6 +31,19 @@ public class AddEventPage extends BasePage {
     public WebElement OneCarToAddEvent;
 
 
+    ///------------------------------------------------------------------
 
+
+    @FindBy(xpath = "(//td[@class='string-cell grid-cell grid-body-cell grid-body-cell-Location'])[1]")
+    public WebElement vehiclesRow1;
+
+    @FindBy(xpath = "//a[@title='Add an event to this record']")
+    public WebElement addEventButton;
+
+    @FindBy(xpath = "//span[@id='ui-id-10']")
+    public WebElement addEventPopUpTitle;
+
+    @FindBy(xpath = "//button[@title='close']")
+    public WebElement addEventCloseButton;
 
 }
