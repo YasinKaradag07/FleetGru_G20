@@ -1,10 +1,13 @@
 package com.fleetgru.pages;
 
 import com.fleetgru.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,21 +47,38 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//button[@class='btn dropdown-toggle ']")
     public WebElement viewPerPageDropdownButton;
 
+
     @FindBy(xpath = "//a[@data-size='10']")
-    public WebElement dropdownMenuNumberTen;
+    public WebElement dropdownMenuNumber10;
+/*
+    @FindBy(xpath = "//a[@data-size='25']")
+    public WebElement dropDownMenuNumber25;
 
-    @FindBy(xpath = "grid-row")
-    public WebElement vehicleTableRows;
+    @FindBy(xpath = "//a[@data-size='50']")
+    public WebElement dropDownMenuNumber50;
 
-    public static int getElementsCount(By locator) {
+    @FindBy(xpath = "//a[@data-size='100']")
+    public WebElement dropDownMenuNumber100;
+    */
 
-        List<WebElement> rows = Driver.getDriver().findElements(locator);
-        List<String> tableRows = new ArrayList<>();
+    @FindBy(xpath = "//tr[@class='grid-row']")
+    public List<WebElement> tableRows;
 
-        for (WebElement row : rows) {
-            tableRows.add(row.getText());
-        }
-        return tableRows.size();
+    public void waitForVisibilityOfDropdownButton(){
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+        wait.until(ExpectedConditions.visibilityOf(viewPerPageDropdownButton));
     }
+
+    @FindBy(xpath = "//a[@class='dropdown-item']")
+    public List<WebElement> dropdownNumbersList;
+
+    public void listCompare(String string){
+        ArrayList<String> numberList = new ArrayList<>();
+        for(WebElement each : dropdownNumbersList){
+            numberList.add(each.getText());
+        }
+        Assert.assertTrue(numberList.contains(string));
+    }
+
 
 }

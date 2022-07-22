@@ -30,6 +30,14 @@ public abstract class BasePage {
 
     }
 
+    @FindBy(xpath = "//div[@class='bar']")
+    public WebElement loadingBar;
+
+    public void waitLoadingBar(){
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+        wait.until(ExpectedConditions.invisibilityOf(loadingBar));
+    }
+
 
 
 
