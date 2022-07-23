@@ -47,9 +47,57 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//button[@class='btn dropdown-toggle ']")
     public WebElement viewPerPageDropdownButton;
 
-
     @FindBy(xpath = "//a[@data-size='10']")
     public WebElement dropdownMenuNumber10;
+
+    @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div[2]/div[2]/div/div[1]/div[2]/div/div/div/h5/span")
+    public WebElement generalInfoPage;
+
+    @FindBy(xpath = "//*[@id=\"main-menu\"]/ul/li[1]/a/span")
+    public WebElement driverFleet;
+
+    @FindBy(xpath = "//*[@id=\"main-menu\"]/ul/li[2]/a/span")
+    public WebElement managerFleet;
+
+    @FindBy(xpath = "//*[@id=\"main-menu\"]/ul/li[1]/div/div/ul/li[3]/a/span")
+    public WebElement driverVehicles;
+
+    @FindBy(xpath = "//*[@id=\"main-menu\"]/ul/li[2]/div/div/ul/li[3]/a/span")
+    public WebElement managerVehicles;
+
+    @FindBy(xpath = "//div/table/tbody/tr[1]/td[1]")
+    public WebElement firstDriverCar;
+
+    @FindBy(xpath = "//div/table/tbody/tr[1]/td[2]")
+    public WebElement firstManagerCar;
+
+    @FindBy(xpath = "//div/table/tbody/tr[1]/td[20]/div/div/a")
+    public WebElement driverThreeDotsIcon;
+
+    @FindBy(xpath = "//div/table/tbody/tr[1]/td[21]/div/div/a")
+    public WebElement managerThreeDotsIcon;
+
+    @FindBy(xpath = "//div/table/tbody/tr[1]/td[20]/div/div/ul/li/ul/li[1]/a")
+    public WebElement driverEyeIcon;
+
+    @FindBy(xpath = "//div/table/tbody/tr[1]/td[21]/div/div/ul/li/ul/li[1]/a")
+    public WebElement managerEyeIcon;
+
+    @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div[1]/div/div/div[1]/div[1]/div[1]/a")
+    public WebElement managerEditButton;
+
+    @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div[1]/div/div/div[1]/div[1]/div[2]/a")
+    public WebElement managerDeleteButton;
+
+    @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div[1]/div/div/div[1]/div[1]/div[3]/a")
+    public WebElement managerAddEventButton;
+
+    @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div[1]/div/div/div[1]/div[1]/div/a")
+    public WebElement driverAddEventButton;
+
+    @FindBy(xpath = "//div/table/tbody/tr[1]/td[1]/input")
+    public WebElement inputBox;
+
 /*
     @FindBy(xpath = "//a[@data-size='25']")
     public WebElement dropDownMenuNumber25;
