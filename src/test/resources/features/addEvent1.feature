@@ -9,3 +9,5 @@ Feature: Storemanager and Salesmanager add event feature
       And User hover over fleet tab and clicks Vehicles module
       And User click on any vehicle and land on general information page
       Then User can access the add event page
+
+

@@ -10,6 +10,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.NoSuchElementException;
 
 public class AddEventStepDef1 {
 
@@ -27,23 +28,35 @@ public class AddEventStepDef1 {
     }
     @When("User hover over fleet tab and clicks Vehicles module")
     public void user_hover_over_fleet_tab_and_clicks_vehicles_module() {
-        addEventPage.waitUntilLoaderScreenDisappear();
+        //addEventPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.sleep(15);
         manageFiltersPage.navigateToFleetVehicleModule();
-        addEventPage.waitUntilLoaderScreenDisappear();
+        //addEventPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.sleep(15);
     }
     @When("User click on any vehicle and land on general information page")
     public void user_click_on_any_vehicle_and_land_on_general_information_page() {
         addEventPage.vehiclesRow1.click();
-        addEventPage.waitUntilLoaderScreenDisappear();
+        //addEventPage.waitUntilLoaderScreenDisappear();
+        //BrowserUtils.sleep(15);
     }
 
     @Then("User can access the add event page")
     public void user_can_access_the_add_event_page() {
+        BrowserUtils.sleep(15);
+        //BrowserUtils.waitForVisibility(addEventPage.addEventButton, 5);
         addEventPage.addEventButton.click();
-        addEventPage.waitUntilLoaderScreenDisappear();
-        BrowserUtils.sleep(3);
+        //addEventPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.sleep(15);
         Assert.assertEquals("Add Event", addEventPage.addEventPopUpTitle.getText());
-        addEventPage.addEventCloseButton.click();
+        //addEventPage.addEventCloseButton.click();
+        try {
+            BrowserUtils.sleep(15);
+            addEventPage.addEventCloseButton.click();
+            BrowserUtils.sleep(5);
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
     }
 
 
