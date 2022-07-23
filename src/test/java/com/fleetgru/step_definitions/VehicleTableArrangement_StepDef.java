@@ -68,7 +68,25 @@ public class VehicleTableArrangement_StepDef {
         vehiclesPage.listCompare(string);
     }
 
+    @When("the user clicks column name")
+    public void the_user_clicks_column_name() {
 
+    }
+
+    @Then("the user is able to sort column in ascending or descending order")
+    public void the_user_is_able_to_sort_column_in_ascending_or_descending_order() {
+
+    }
+
+    @When("the user clicks reset button")
+    public void the_user_clicks_reset_button() {
+
+    }
+
+    @Then("the user should be able to remove all sortings and filterings")
+    public void the_user_should_be_able_to_remove_all_sortings_and_filterings() {
+
+    }
 
 
 }
