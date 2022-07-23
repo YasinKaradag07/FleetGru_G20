@@ -1,9 +1,10 @@
-@wip
+
 Feature: As a user, I should be able to arrange vehicle table data under Fleet-Vehicle page
 
   Background: User is on homepage
     Given the user logs in with valid credentials and lands on homepage
     When the user navigates to Vehicles menu under Fleet menu
+
 
   Scenario: User can arrange rows/vehicle numbers to be displayed by clicking
   on 'View Per Page' button under Fleet-Vehicles module

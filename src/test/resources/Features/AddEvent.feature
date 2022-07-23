@@ -1,6 +1,6 @@
 Feature: Store manager and sales manager should be able to add an event
 
-  @wip
+
   Scenario: User in the Dashboard page
     Given User clicks "New Event" button
     Then "Add New Event" page pops up
