@@ -8,7 +8,7 @@ Feature: Store manager and sales manager should be able to add an event
     Then the user Hover Over Fleet and click  Vehicles
     And the user click any car info
     Then verify that General Information page opened and Add Event Button is seen
-    And user click logout button_AddEvent
+    And user click AddEvent button
 
     Examples:
       | User Type     |
