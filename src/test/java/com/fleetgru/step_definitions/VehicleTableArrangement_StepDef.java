@@ -12,9 +12,11 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
-import java.util.List;
+import java.util.*;
 
 public class VehicleTableArrangement_StepDef {
 
@@ -33,13 +35,13 @@ public class VehicleTableArrangement_StepDef {
     public void the_user_navigates_to_vehicles_menu_under_fleet_menu() {
         vehiclesPage.waitLoadingBar();
         manageFiltersPage.navigateToFleetVehicleModule();
-        vehiclesPage.waitForVisibilityOfDropdownButton();
+
 
     }
 
     @When("the user clicks View Per Page dropdown button")
     public void the_user_clicks_view_per_page_dropdown_button() {
-
+        vehiclesPage.waitForVisibilityOfDropdownButton();
         vehiclesPage.viewPerPageDropdownButton.click();
     }
 
@@ -70,12 +72,21 @@ public class VehicleTableArrangement_StepDef {
 
     @When("the user clicks column name")
     public void the_user_clicks_column_name() {
+        // click licence plate column name in order to change order
+        //vehiclesPage.waitUntilLoaderScreenDisappear();
+        vehiclesPage.waitForClickabilityOfLicencePlateColumnName();
+        BrowserUtils.sleep(3);
+        vehiclesPage.licencePlateColumnName.click();
+        vehiclesPage.waitForClickabilityOfLicencePlateColumnName();
 
+        // JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+        // js.executeScript("arguments[0].scrollIntoView()", vehiclesPage.licencePlateColumnName);
     }
 
     @Then("the user is able to sort column in ascending or descending order")
     public void the_user_is_able_to_sort_column_in_ascending_or_descending_order() {
 
+        vehiclesPage.verifyColumnsSortableByClicking();
     }
 
     @When("the user clicks reset button")
