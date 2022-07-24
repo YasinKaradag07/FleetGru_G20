@@ -9,26 +9,7 @@ public class AddEventPage extends BasePage {
 
 
 
-    @FindBy(xpath = "(//span[@class='title title-level-1'])[2]")
-    public WebElement FleetTab;
 
-    @FindBy(xpath = "//*[@id=\"main-menu\"]/ul/li[2]/div/div/ul/li[3]/a")
-    public WebElement FleetVehicle;
-
-    @FindBy(xpath = "//tbody[@class='grid-body']//tr")
-    public List<WebElement> AllCarRow;  //to store all 25 rows
-
-
-    @FindBy(xpath = "//*[@aria-describedby='ui-id-1']")
-    public WebElement AddEventPopUp;
-
-
-
-    @FindBy(xpath = "//*[@class='control-label wrap']//em[contains(text(),'*')]/parent::*")
-    public List<WebElement> CompulsoryField;
-
-    @FindBy(xpath = "//tr[@class='grid-row row-click-action'][1]")
-    public WebElement OneCarToAddEvent;
 
 
     ///------------------------------------------------------------------
@@ -45,5 +26,57 @@ public class AddEventPage extends BasePage {
 
     @FindBy(xpath = "//button[@title='close']")
     public WebElement addEventCloseButton;
+
+    @FindBy(className = "ui-dialog")
+    public WebElement addEventPopUp;
+
+//    @FindBy(xpath = "//*[@class=\"required\"]/em[text()=\"*\"]/..")
+//    public List<WebElement> compulsoryFieldsList;
+
+    @FindBy(xpath = "//label[text()='Title']")
+    public WebElement fieldTitle;
+
+    @FindBy(xpath = "//label[text()='Owner']")
+    public WebElement fieldOwner;
+
+    @FindBy(xpath = "//label[text()='Organizer display name']")
+    public WebElement fieldOrganizerDispName;
+
+    @FindBy(xpath = "//label[text()='Organizer email']")
+    public WebElement fieldOrganizerEmail;
+
+    @FindBy(xpath = "//label[text()='Start']")
+    public WebElement fieldStartDate;
+
+    @FindBy(xpath = "//label[text()='End']")
+    public WebElement fieldEndDate;
+
+    @FindBy(xpath = "(//input[@placeholder='Choose a date'])[1]")
+    public WebElement startDateBox;
+
+    @FindBy(xpath = "(//input[@placeholder='Choose a date'])[2]")
+    public WebElement endDateBox;
+
+    //@FindBy(xpath = "//button[.='Save']")
+    @FindBy(xpath = "//button[@class='btn btn-primary']")
+    public WebElement saveButton;
+
+    @FindBy(xpath = "(//span[.='This value should not be blank.'])[2]")
+    public WebElement titleBoxWarning;
+
+    @FindBy(xpath = "(//span[.='This value should not be blank.'])[5]")
+    public WebElement startDateBoxWarning;
+
+    @FindBy(xpath = "(//span[.='This value should not be blank.'])[8]")
+    public WebElement endDateBoxWarning;
+
+    @FindBy(xpath = "//input[@name='oro_calendar_event_form[organizerDisplayName]']")
+    public WebElement organizerDispNameBox;
+
+    @FindBy(xpath = "//input[@type='email']")
+    public WebElement organizerEmailBox;
+
+    @FindBy(xpath = "//input[@name='oro_calendar_event_form[title]']")
+    public WebElement titleBox;
 
 }

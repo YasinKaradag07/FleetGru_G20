@@ -62,14 +62,14 @@ public class ManageFiltersPage extends BasePage {
     public void navigateToFleetVehicleModule() {
 
         try {
-            waitForClickablility(fleetTab, 5);
+            waitForClickablility(fleetTab, 10);
             new Actions(Driver.getDriver()).moveToElement(fleetTab).pause(200).doubleClick(fleetTab).build().perform();
         } catch (Exception e) {
             System.out.println("fleetTab not clickable");
         }
 
         try {
-            waitForVisibility(vehicleModule, 5);
+            waitForVisibility(vehicleModule, 10);
             scrollToElementAndClick(vehicleModule);
 
         } catch (Exception e) {
