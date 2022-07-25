@@ -15,9 +15,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 import java.util.List;
+
+
 
 
 public class VehiclesPage extends BasePage {
@@ -225,6 +226,19 @@ public class VehiclesPage extends BasePage {
         Assert.assertNotEquals(firstLicencePlateOfList,firstLicencePlateOfSortedList);
 
     }
+
+
+    @FindBy(xpath = "//tbody[@class='grid-body']/tr[1]/td[1]")
+    public WebElement firstLicensePlateCell;
+
+    @FindBy(id = "ui-multiselect-0-0-option-2")
+    public WebElement driverFilterCheckBox;
+
+    @FindBy(xpath = "//span[@class='filter-items']")
+    public WebElement firstFilterItem;
+
+    @FindBy(xpath = "//div[@class='btn filter-criteria-selector oro-drop-opener oro-dropdown-toggle filter-default-value']")
+    public WebElement driverFilterShownButton;
 
 
 }
