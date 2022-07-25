@@ -6,12 +6,12 @@ import com.fleetgru.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Test;
 
 
 public class VehicleTableArrangement_StepDef {
 
     LoginPage loginPage = new LoginPage();
-
 
     @Given("the user logs in with valid credentials and lands on homepage")
     public void the_user_logs_in_with_valid_credentials_and_lands_on_homepage() {

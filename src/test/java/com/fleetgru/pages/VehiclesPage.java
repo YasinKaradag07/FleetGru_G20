@@ -3,11 +3,10 @@ package com.fleetgru.pages;
 import com.fleetgru.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import org.openqa.selenium.support.FindBy;
 
-
 import java.util.List;
+
 
 public class VehiclesPage extends BasePage {
 
