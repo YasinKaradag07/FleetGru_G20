@@ -54,7 +54,6 @@ public class VehicleGeneralInformation_StepDef {
         if(arg0.equals("Driver")){
             vehiclesPage.driverThreeDotsIcon.click();
             vehiclesPage.driverThreeDotsIcon.click();
-
             BrowserUtils.sleep(2);
             vehiclesPage.driverEyeIcon.click();
         }

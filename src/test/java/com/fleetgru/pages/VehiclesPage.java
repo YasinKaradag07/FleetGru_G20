@@ -1,8 +1,12 @@
 package com.fleetgru.pages;
 
+import com.fleetgru.utilities.BrowserUtils;
 import com.fleetgru.utilities.Driver;
+
 import org.junit.Assert;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +14,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
+import java.util.List;
+
 
 public class VehiclesPage extends BasePage {
 
@@ -40,6 +48,91 @@ public class VehiclesPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='message']")
     public WebElement exportMessage;
+    
+    @FindBy(xpath = "//a[@title='Grid Settings']")
+    public WebElement gearIcon;
+
+    @FindBy(xpath = "//div[@class='dropdown-menu']")
+    public WebElement gridSettingsDropdownMenu;
+
+    @FindBy(xpath = "//input[@data-role='column-manager-search']")
+    public WebElement quickSearchBox;
+
+    public List<String> columnNames(){
+        for (int i = 469; i <=488 ; i++) {
+           columnNames().add(Driver.getDriver().findElement(By.xpath("//label[@for='column-c"+i+"']")).getText());
+        }
+        return columnNames();
+    }
+
+    @FindBy(xpath = "//span[@class='column-filter-match']")
+    public WebElement getQuickSearchResult;
+
+
+    @FindBy(xpath = "//label[@for='column-c469']")
+    public WebElement id;
+
+    @FindBy(xpath = "//label[@for='column-c470']")
+    public WebElement licensePlate;
+
+    @FindBy(xpath = "//label[@for='column-c471']")
+    public WebElement Tags;
+
+    @FindBy(xpath = "//label[@for='column-c472']")
+    public WebElement driverr;
+
+    @FindBy(xpath = "//label[@for='column-c473']")
+    public WebElement location;
+
+    @FindBy(xpath = "//label[@for='column-c474']")
+    public WebElement chassisNumber;
+
+    @FindBy(xpath = "//label[@for='column-c475']")
+    public WebElement modelYear;
+
+    @FindBy(xpath = "//label[@for='column-c476']")
+    public WebElement lastOdometer;
+
+    @FindBy(xpath = "//label[@for='column-c477']")
+    public WebElement immatriculationDate;
+
+    @FindBy(xpath = "//label[@for='column-c478']")
+    public WebElement firstContractDate;
+
+    @FindBy(xpath = "//label[@for='column-c479']")
+    public WebElement catalogValue;
+
+    @FindBy(xpath = "//label[@for='column-c480']")
+    public WebElement seatsNumber;
+
+    @FindBy(xpath = "//label[@for='column-c481']")
+    public WebElement doorsNumber;
+
+    @FindBy(xpath = "//label[@for='column-c482']")
+    public WebElement color;
+
+    @FindBy(xpath = "//label[@for='column-c483']")
+    public WebElement transmission;
+
+    @FindBy(xpath = "//label[@for='column-c484']")
+    public WebElement fuelType;
+
+    @FindBy(xpath = "//label[@for='column-c485']")
+    public WebElement co2Emmisions;
+
+    @FindBy(xpath = "//label[@for='column-c486']")
+    public WebElement horsePower;
+
+    @FindBy(xpath = "//label[@for='column-c487']")
+    public WebElement horsePowerTaxation;
+
+    @FindBy(xpath = "//label[@for='column-c488']")
+    public WebElement power;
+
+
+
+
+
 
     @FindBy(xpath = "(//div[@class='pagination pagination-centered']/label)[2]")
     public WebElement totalPageNumber;
@@ -126,6 +219,59 @@ public class VehiclesPage extends BasePage {
             numberList.add(each.getText());
         }
         Assert.assertTrue(numberList.contains(string));
+    }
+
+    @FindBy(xpath = "//span[.='License Plate']")
+    public WebElement licencePlateColumnName;
+
+    //@FindBy(xpath = "(//a[@class='grid-header-cell__link'])[1]")
+    //public WebElement licencePlateColumnName;
+
+    @FindBy(xpath = "//td[@class='string-cell grid-cell grid-body-cell grid-body-cell-LicensePlate']")
+    public List<WebElement> licencePlateCells;
+
+    public void waitForClickabilityOfLicencePlateColumnName(){
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+            wait.until(ExpectedConditions.elementToBeClickable(licencePlateColumnName));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void verifyColumnsSortableByClicking(){
+
+        // then get the list of licence plates in sorted order
+        List<String> licencePlateTextsReverseSorted = new ArrayList<>();
+        for(WebElement eachLicencePlate : licencePlateCells){
+            licencePlateTextsReverseSorted.add(eachLicencePlate.getText());
+        }
+        System.out.println("licencePlateTextsReverseSorted = " + licencePlateTextsReverseSorted);
+
+        //after getting changed order's licence plates, click column name again
+
+        licencePlateColumnName.click();
+        BrowserUtils.sleep(3);
+
+
+        //JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+        //js.executeScript("arguments[0].scrollIntoView()", licencePlateColumnName);
+
+        // then again get texts of licence plates in sorted order again
+
+        List<String> licencePlateTextsAfterSecondClick = new ArrayList<>();
+
+        for(WebElement eachLicencePlate : licencePlateCells){
+
+            licencePlateTextsAfterSecondClick.add(eachLicencePlate.getText());
+        }
+        System.out.println("licencePlateTextsAfterSecondClick = " + licencePlateTextsAfterSecondClick);
+
+        // then we need to verify if we could change the list order
+        String firstLicencePlateOfList = licencePlateTextsReverseSorted.get(0);
+        String firstLicencePlateOfSortedList = licencePlateTextsAfterSecondClick.get(0);
+        Assert.assertNotEquals(firstLicencePlateOfList,firstLicencePlateOfSortedList);
+
     }
 
 
