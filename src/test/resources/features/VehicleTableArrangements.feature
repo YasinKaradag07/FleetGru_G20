@@ -1,9 +1,10 @@
-@wip
+
 Feature: As a user, I should be able to arrange vehicle table data under Fleet-Vehicle page
 
   Background: User is on homepage
     Given the user logs in with valid credentials and lands on homepage
     When the user navigates to Vehicles menu under Fleet menu
+
 
   Scenario: User can arrange rows/vehicle numbers to be displayed by clicking
   on 'View Per Page' button under Fleet-Vehicles module
@@ -29,3 +30,13 @@ Scenario: The value of 'View Per Page' should be '25' by default
     |25     |
     |50     |
     |100    |
+
+  @wip
+    Scenario: User can sort a column in ascending or descending order by clicking the column name
+      And the user clicks column name
+      Then the user is able to sort column in ascending or descending order
+
+
+    Scenario:User can remove all sortings and filterings on the page by using the reset button
+      And the user clicks reset button
+      Then the user should be able to remove all sortings and filterings
