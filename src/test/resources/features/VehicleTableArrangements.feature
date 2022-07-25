@@ -31,12 +31,16 @@ Scenario: The value of 'View Per Page' should be '25' by default
     |50     |
     |100    |
 
+
 @FLT-1941 @wip
+
     Scenario: User can sort a column in ascending or descending order by clicking the column name
       And the user clicks column name
       Then the user is able to sort column in ascending or descending order
 
+
 @FLT-1942 @wip
+
     Scenario:User can remove all sortings and filterings on the page by using the reset button
       And the user clicks reset button
       Then the user should be able to remove all sortings and filterings

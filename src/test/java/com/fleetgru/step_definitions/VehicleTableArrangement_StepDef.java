@@ -15,9 +15,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.*;
+
 
 public class VehicleTableArrangement_StepDef {
 
@@ -87,6 +89,7 @@ public class VehicleTableArrangement_StepDef {
     @Then("the user is able to sort column in ascending or descending order")
     public void the_user_is_able_to_sort_column_in_ascending_or_descending_order() {
 
+
         vehiclesPage.verifyColumnsSortableByClicking();
     }
 
@@ -144,6 +147,19 @@ public class VehicleTableArrangement_StepDef {
 
         Assert.assertFalse(vehiclesPage.driverFilterShownButton.isDisplayed());
 
+
+        vehiclesPage.verifyColumnsSortableByClicking();
+    }
+
+    @When("the user clicks reset button")
+    public void the_user_clicks_reset_button() {
+
+    }
+
+    @Then("the user should be able to remove all sortings and filterings")
+    public void the_user_should_be_able_to_remove_all_sortings_and_filterings() {
+
+    }
 
 
     }
