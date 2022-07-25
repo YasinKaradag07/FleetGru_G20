@@ -3,17 +3,12 @@ package com.fleetgru.step_definitions;
 import com.fleetgru.pages.DashboardPage;
 import com.fleetgru.pages.LoginPage;
 import com.fleetgru.pages.VehiclesPage;
-import com.fleetgru.utilities.BrowserUtils;
 import com.fleetgru.utilities.ConfigurationReader;
 import com.fleetgru.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class VehicleTableArrangement_StepDef {
 
