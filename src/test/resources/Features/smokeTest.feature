@@ -1,3 +1,4 @@
+@smoke @FLT-1944
 Feature:
 
   Background:
