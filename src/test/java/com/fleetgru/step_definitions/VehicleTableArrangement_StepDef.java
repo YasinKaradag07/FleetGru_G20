@@ -8,7 +8,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Test;
 
-
 public class VehicleTableArrangement_StepDef {
 
     LoginPage loginPage = new LoginPage();
