@@ -1,8 +1,6 @@
 package com.fleetgru.step_definitions;
 
-import com.fleetgru.pages.DashboardPage;
 import com.fleetgru.pages.LoginPage;
-import com.fleetgru.pages.VehiclesPage;
 import com.fleetgru.utilities.ConfigurationReader;
 import com.fleetgru.utilities.Driver;
 import io.cucumber.java.en.Given;
@@ -13,8 +11,7 @@ import io.cucumber.java.en.When;
 public class VehicleTableArrangement_StepDef {
 
     LoginPage loginPage = new LoginPage();
-    VehiclesPage vehiclesPage = new VehiclesPage();
-    DashboardPage dashboardPage = new DashboardPage();
+
 
     @Given("the user logs in with valid credentials and lands on homepage")
     public void the_user_logs_in_with_valid_credentials_and_lands_on_homepage() {
