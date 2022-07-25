@@ -1,10 +1,12 @@
 package com.fleetgru.pages;
 
+import com.fleetgru.utilities.BrowserUtils;
 import com.fleetgru.utilities.Driver;
 
 import org.junit.Assert;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import java.util.List;
@@ -168,6 +171,59 @@ public class VehiclesPage extends BasePage {
             numberList.add(each.getText());
         }
         Assert.assertTrue(numberList.contains(string));
+    }
+
+    @FindBy(xpath = "//span[.='License Plate']")
+    public WebElement licencePlateColumnName;
+
+    //@FindBy(xpath = "(//a[@class='grid-header-cell__link'])[1]")
+    //public WebElement licencePlateColumnName;
+
+    @FindBy(xpath = "//td[@class='string-cell grid-cell grid-body-cell grid-body-cell-LicensePlate']")
+    public List<WebElement> licencePlateCells;
+
+    public void waitForClickabilityOfLicencePlateColumnName(){
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+            wait.until(ExpectedConditions.elementToBeClickable(licencePlateColumnName));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void verifyColumnsSortableByClicking(){
+
+        // then get the list of licence plates in sorted order
+        List<String> licencePlateTextsReverseSorted = new ArrayList<>();
+        for(WebElement eachLicencePlate : licencePlateCells){
+            licencePlateTextsReverseSorted.add(eachLicencePlate.getText());
+        }
+        System.out.println("licencePlateTextsReverseSorted = " + licencePlateTextsReverseSorted);
+
+        //after getting changed order's licence plates, click column name again
+
+        licencePlateColumnName.click();
+        BrowserUtils.sleep(3);
+
+
+        //JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+        //js.executeScript("arguments[0].scrollIntoView()", licencePlateColumnName);
+
+        // then again get texts of licence plates in sorted order again
+
+        List<String> licencePlateTextsAfterSecondClick = new ArrayList<>();
+
+        for(WebElement eachLicencePlate : licencePlateCells){
+
+            licencePlateTextsAfterSecondClick.add(eachLicencePlate.getText());
+        }
+        System.out.println("licencePlateTextsAfterSecondClick = " + licencePlateTextsAfterSecondClick);
+
+        // then we need to verify if we could change the list order
+        String firstLicencePlateOfList = licencePlateTextsReverseSorted.get(0);
+        String firstLicencePlateOfSortedList = licencePlateTextsAfterSecondClick.get(0);
+        Assert.assertNotEquals(firstLicencePlateOfList,firstLicencePlateOfSortedList);
+
     }
 
 
