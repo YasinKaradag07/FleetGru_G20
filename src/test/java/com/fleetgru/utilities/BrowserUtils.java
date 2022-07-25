@@ -82,6 +82,11 @@ public class BrowserUtils {
         }
     }
 
+    public static void executeJSCommand(WebElement element, String command) {
+        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
+        jse.executeScript(command, element);
+    }
+
 
 
 }
