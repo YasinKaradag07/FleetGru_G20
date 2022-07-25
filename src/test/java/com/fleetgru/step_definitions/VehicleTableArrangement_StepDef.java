@@ -151,18 +151,10 @@ public class VehicleTableArrangement_StepDef {
         vehiclesPage.verifyColumnsSortableByClicking();
     }
 
-    @When("the user clicks reset button")
-    public void the_user_clicks_reset_button() {
 
-    }
-
-    @Then("the user should be able to remove all sortings and filterings")
-    public void the_user_should_be_able_to_remove_all_sortings_and_filterings() {
-
-    }
 
 
     }
 
 
-}
+
