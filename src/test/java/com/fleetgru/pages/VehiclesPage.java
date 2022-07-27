@@ -158,7 +158,7 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"main-menu\"]/ul/li[2]/div/div/ul/li[3]/a/span")
     public WebElement managerVehicles;
 
-    @FindBy(xpath = "//div/table/tbody/tr[1]/td[1]")
+    @FindBy(xpath = "//div/table/tbody/tr[1]")
     public WebElement firstDriverCar;
 
     @FindBy(xpath = "//div/table/tbody/tr[1]/td[2]")
@@ -170,10 +170,10 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//div/table/tbody/tr[1]/td[21]/div/div/a")
     public WebElement managerThreeDotsIcon;
 
-    @FindBy(xpath = "//div/table/tbody/tr[1]/td[20]/div/div/ul/li/ul/li[1]/a")
+    @FindBy(xpath = "//div/table/tbody/tr[1]/td[20]/div/div/ul/li/ul/li[1]/a/i")
     public WebElement driverEyeIcon;
 
-    @FindBy(xpath = "//div/table/tbody/tr[1]/td[21]/div/div/ul/li/ul/li[1]/a")
+    @FindBy(xpath = "//div/table/tbody/tr[1]/td[21]/div/div/ul/li/ul/li[1]/a/i")
     public WebElement managerEyeIcon;
 
     @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div[1]/div/div/div[1]/div[1]/div[1]/a")
@@ -188,8 +188,29 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div[1]/div/div/div[1]/div[1]/div/a")
     public WebElement driverAddEventButton;
 
-    @FindBy(xpath = "//div/table/tbody/tr[1]/td[1]/input")
-    public WebElement inputBox;
+    @FindBy(xpath = "//div/table/tbody/tr[1]/td[2]/ul/li")
+    public WebElement firstDriverTag;
+
+    @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div[2]/div[2]/div/div[1]/div[2]/div/div/div/div[2]/div/div")
+    public WebElement firstDriverTagName;
+
+    @FindBy(xpath = "//div/table/tbody/tr[1]/td[4]")
+    public WebElement firstDriverLocation;
+
+    @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div[2]/div[2]/div/div[1]/div[2]/div/div/div/div[4]/div/div")
+    public WebElement firstDriverLocationName;
+
+    @FindBy(xpath = "//div/table/tbody/tr[1]/td[3]/ul/li")
+    public WebElement firstManagerTag;
+
+    @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div[2]/div[2]/div/div[1]/div[2]/div/div/div/div[2]/div/div")
+    public WebElement firstManagerTagName;
+
+    @FindBy(xpath = "//div/table/tbody/tr[1]/td[5]")
+    public WebElement firstManagerLocation;
+
+    @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div[2]/div[2]/div/div[1]/div[2]/div/div/div/div[4]/div/div")
+    public WebElement firstManagerLocationName;
 
 /*
     @FindBy(xpath = "//a[@data-size='25']")

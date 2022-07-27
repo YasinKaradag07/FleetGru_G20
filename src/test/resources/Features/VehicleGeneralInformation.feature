@@ -67,7 +67,7 @@ Feature: User Story : As a user, I should be able to see the detailed informatio
       When user login as "<userType>" with "<username>" and "<password>"
       And user clicks Fleet and Vehicles module as "<userType>"
       And user clicks on any vehicle(row) as "<userType>"
-      Then user can see the general information page
+      Then user can see the general information page fleet vehicle page are the same as "<userType>"
 
       Examples: Needed credentials.
 
