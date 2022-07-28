@@ -14,6 +14,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.junit.rules.ExpectedException;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -47,7 +48,8 @@ public class GridSettingsStepDef {
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(dashboardPage.fleetButton).perform();
         dashboardPage.vehicles.click();
-        BrowserUtils.sleep(15);
+       // BrowserUtils.sleep(15);
+        dashboardPage.waitUntilLoaderScreenDisappear();
     }
 
     @Given("the user is on the dashboard page")
@@ -55,21 +57,11 @@ public class GridSettingsStepDef {
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
         loginPage.usernameBox.sendKeys("user1");
         loginPage.passwordBox.sendKeys("UserUser123"+ Keys.ENTER);
-        BrowserUtils.sleep(5);
+        dashboardPage.waitLoadingBar();
 
     }
 
-    @Then("the column names should be displayed")
-    public void theColumnNamesShouldBeDisplayed() {
-        List<String> expectedColumnNames= new ArrayList<>();
-        expectedColumnNames.addAll(Arrays.asList("Id", "Tags", "License Plate","Tags","Driver"
-                ,"Location","Chassis Number","Model Year","Last Odometer","Immatriculation Date","First Contract Date",
-                "Catalog Value (VAT Incl.)","Seats Number","Doors Number","Color","Transmission","Fuel Type","CO2 Emissions",
-                "Horsepower","Horsepower Taxation","Power (kW)"));
 
-        Assert.assertEquals(expectedColumnNames,vehiclesPage.columnNames());
-
-    }
 
 
     @And("the user typing the {string} on Quick Search input box")
@@ -78,10 +70,55 @@ public class GridSettingsStepDef {
         
     }
 
-    @Then("the user should find the {string} in the search box")
-    public void theUserShouldFindTheInTheSearchBox(String expectedColumnName) {
+    @Then("the user should see the {string} in the quickSearchBox")
+    public void theUserShouldSeeTheInTheQuickSearchBox(String name) {
         Assert.assertTrue(vehiclesPage.getQuickSearchResult.isDisplayed());
     }
 
 
-}
+    @Then("Column names in grid settings should be shown as below:")
+    public void columnNamesInGridSettingsShouldBeShownAsBelow(List<String> menuOptions) {
+        List<String> actualMenuOptions = new ArrayList<>();
+        for (WebElement columnName : vehiclesPage.columnNames) {
+            actualMenuOptions.add(columnName.getText());
+        }
+        Assert.assertEquals(menuOptions,actualMenuOptions);
+
+
+    }
+
+
+
+    @When("the user clicks on the {string} checkbox")
+    public void theUserClicksOnTheCheckbox(String name) {
+
+        switch (name){
+
+            case "Id":
+                vehiclesPage.idCheckBox.click();
+                break;
+            case "Licencse Plate":
+                vehiclesPage.licensePlateCheckBox.click();
+                vehiclesPage.licensePlateCheckBox.click();
+                break;
+            case "Tags":
+                vehiclesPage.tagsCheckBox.click();
+                vehiclesPage.tagsCheckBox.click();
+                break;
+        }
+    }
+
+    @Then("the user should see the {string} on the vehicles table")
+    public void theUserShouldSeeTheOnTheVehiclesTable(String name) {
+        for (WebElement webElement : vehiclesPage.correspondingColumnName) {
+                Assert.assertTrue(webElement.getText().contains(name));
+        }
+
+        }
+
+
+
+    }
+
+
+
