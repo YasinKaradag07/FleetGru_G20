@@ -16,6 +16,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import org.openqa.selenium.support.ui.Select;
+
 import java.util.*;
 
 public class VehicleTableArrangement_StepDef {
@@ -86,18 +88,72 @@ public class VehicleTableArrangement_StepDef {
     @Then("the user is able to sort column in ascending or descending order")
     public void the_user_is_able_to_sort_column_in_ascending_or_descending_order() {
 
+
         vehiclesPage.verifyColumnsSortableByClicking();
     }
 
     @When("the user clicks reset button")
     public void the_user_clicks_reset_button() {
+        // In order to see functionality of reset button, first we should put filter and sort a column
 
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+        // we should see the default value of first licence plate
+        String firstLicensePlateValue = vehiclesPage.firstLicensePlateCell.getText();
+        System.out.println("firstLicensePlateValue = " + firstLicensePlateValue);
+
+        // we need to click filter icon if manage filter is not visible
+        if (manageFiltersPage.manageFiltersButton.isDisplayed()) {
+            manageFiltersPage.manageFiltersButton.click();
+            //BrowserUtils.sleep(5);
+        } else {
+            ManageFiltersPage.waitForClickablility(manageFiltersPage.filterIcon, 10);
+            //BrowserUtils.sleep(5);
+            manageFiltersPage.filterIcon.click();
+            ManageFiltersPage.waitForClickablility(manageFiltersPage.manageFiltersButton,10);
+            manageFiltersPage.manageFiltersButton.click();
+        }
+
+        vehiclesPage.driverFilterCheckBox.click();
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+
+        // In order to close dropdown menu and make license plate column name visible, we can click manage filters again.
+        manageFiltersPage.manageFiltersButton.click();
+        vehiclesPage.waitForClickabilityOfLicencePlateColumnName();
+
+        vehiclesPage.licencePlateColumnName.click();
+
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+
+        // And get sorted order's license plate
+
+        BrowserUtils.sleep(3);
+        //BrowserUtils.waitForVisibility(vehiclesPage.firstLicensePlateCell,5);
+        String firstLicensePlateOfSortedColumn = vehiclesPage.firstLicensePlateCell.getText();
+
+        System.out.println("firstLicensePlateOfSortedColumn = " + firstLicensePlateOfSortedColumn);
+
+        // then click reset icon
+        ManageFiltersPage.clickWithJS(manageFiltersPage.resetIcon);
+        vehiclesPage.waitUntilLoaderScreenDisappear();
+
+        // above getting plate text codes works but even if reset icon is capable of removing filters, it does NOT change sorted column to default value.
+        String firstLicensePlateValueAfterReset = vehiclesPage.firstLicensePlateCell.getText();
+        System.out.println("firstLicensePlateValueAfterReset = " + firstLicensePlateValueAfterReset);
     }
 
     @Then("the user should be able to remove all sortings and filterings")
     public void the_user_should_be_able_to_remove_all_sortings_and_filterings() {
 
+        Assert.assertFalse(vehiclesPage.driverFilterShownButton.isDisplayed());
+
+
+        vehiclesPage.verifyColumnsSortableByClicking();
     }
 
 
-}
+
+
+    }
+
+
+

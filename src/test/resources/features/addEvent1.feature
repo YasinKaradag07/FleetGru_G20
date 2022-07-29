@@ -1,4 +1,4 @@
-@wip
+
 Feature: Storemanager and Salesmanager add event feature
 
   Background:
