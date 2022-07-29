@@ -46,16 +46,21 @@ Feature: As a user, I should be able to arrange vehicle table columns
       | Horsepower    | Horsepower    |
       | Power (KW)    | Power (KW)    |
 
-  Scenario Outline:  User can select any column by clicking the column name
+  Scenario Outline:  User can select any column by clicking the column name and see the corresponding changes
 
     When the user clicks on the "<name>" checkbox
     Then the user should see the "<name>" on the vehicles table
 
     Examples:
       | name          | name          |
-      | Id            | Id            |
+      | Driver        | Driver        |
       | License Plate | License Plate |
       | Tags          | Tags          |
+
+    Scenario:  User can arrange the order of the columns (by dragging and dropping)
+
+      When user drags license plate and drops on tags
+      Then table heads should change correspondingly
 
 
 

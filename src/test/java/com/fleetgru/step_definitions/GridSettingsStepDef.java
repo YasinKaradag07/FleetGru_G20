@@ -34,6 +34,7 @@ public class GridSettingsStepDef {
 
     @When("the user clicks on the gear icon")
     public void the_user_clicks_on_the_gear_icon() {
+        BrowserUtils.sleep(2);
         vehiclesPage.gearIcon.click();
 
     }
@@ -48,7 +49,6 @@ public class GridSettingsStepDef {
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(dashboardPage.fleetButton).perform();
         dashboardPage.vehicles.click();
-       // BrowserUtils.sleep(15);
         dashboardPage.waitUntilLoaderScreenDisappear();
     }
 
@@ -95,14 +95,12 @@ public class GridSettingsStepDef {
         switch (name){
 
             case "Id":
-                vehiclesPage.idCheckBox.click();
+                vehiclesPage.driverCheckBox.click();
                 break;
             case "Licencse Plate":
                 vehiclesPage.licensePlateCheckBox.click();
-                vehiclesPage.licensePlateCheckBox.click();
                 break;
             case "Tags":
-                vehiclesPage.tagsCheckBox.click();
                 vehiclesPage.tagsCheckBox.click();
                 break;
         }
@@ -110,15 +108,32 @@ public class GridSettingsStepDef {
 
     @Then("the user should see the {string} on the vehicles table")
     public void theUserShouldSeeTheOnTheVehiclesTable(String name) {
-        for (WebElement webElement : vehiclesPage.correspondingColumnName) {
-                Assert.assertTrue(webElement.getText().contains(name));
+
+        Assert.assertFalse(vehiclesPage.gridHeaderCell(name).getText().contains(name));
         }
 
-        }
 
+
+    @Then("table heads should change correspondingly")
+    public void tableHeadsShouldChangeCorrespondingly() {
+
+        Assert.assertTrue(vehiclesPage.firstGridHeaderCell.getText().equalsIgnoreCase("tags"));
+        Assert.assertTrue(vehiclesPage.secondGridHeaderCell.getText().equalsIgnoreCase("license plate"));
+
+    }
+
+    @When("user drags license plate and drops on tags")
+    public void userDragsLicensePlateAndDropsOnTags() {
+
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(vehiclesPage.licensePlateSortButton).clickAndHold().perform();
+        BrowserUtils.sleep(2);
+        actions.moveToElement(vehiclesPage.tagsSortButton).release().perform();
+        BrowserUtils.sleep(2);
 
 
     }
+}
 
 
 

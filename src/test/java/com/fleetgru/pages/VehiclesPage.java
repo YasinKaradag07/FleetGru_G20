@@ -168,8 +168,8 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//tbody/tr/td/label")
     public List<WebElement> gridColumnNames;
 
-    @FindBy(xpath = "//label[@for='column-c469']")
-    public WebElement idCheckBox;
+   // @FindBy(xpath = "//label[@for='column-c469']")
+   // public WebElement idCheckBox;
 
     @FindBy(xpath = "//label[@for='column-c470']")
     public WebElement licensePlateCheckBox;
@@ -177,8 +177,29 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//label[@for='column-c471']")
     public WebElement tagsCheckBox;
 
-   @FindBy(xpath = "//span[@class='grid-header-cell__label']")
-    public List<WebElement> correspondingColumnName;
+    @FindBy(xpath = "//label[@for='column-c472']")
+    public WebElement driverCheckBox;
+
+
+   public WebElement gridHeaderCell(String name){
+       return Driver.getDriver().findElement(By.xpath("(//span[contains(text(),'"+name+"')])[1]"));
+   }
+
+   @FindBy(xpath = "(//span[@class='grid-header-cell__label'])[1]")
+   public WebElement firstGridHeaderCell;
+
+    @FindBy(xpath = "(//span[@class='grid-header-cell__label'])[2]")
+    public WebElement secondGridHeaderCell;
+
+
+
+   @FindBy(xpath = "(//span[@title='Move column'])[2]")
+    public WebElement licensePlateSortButton;
+
+    @FindBy(xpath = "(//span[@title='Move column'])[3]")
+    public WebElement tagsSortButton;
+
+
 
 
 
