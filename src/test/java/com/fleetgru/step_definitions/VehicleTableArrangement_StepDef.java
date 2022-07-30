@@ -20,7 +20,6 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.*;
 
-
 public class VehicleTableArrangement_StepDef {
 
     LoginPage loginPage = new LoginPage();

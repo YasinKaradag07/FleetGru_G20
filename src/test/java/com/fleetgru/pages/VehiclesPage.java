@@ -59,76 +59,14 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//input[@data-role='column-manager-search']")
     public WebElement quickSearchBox;
 
-    public List<String> columnNames(){
-        for (int i = 469; i <=488 ; i++) {
-           columnNames().add(Driver.getDriver().findElement(By.xpath("//label[@for='column-c"+i+"']")).getText());
-        }
-        return columnNames();
-    }
+    @FindBy(xpath = "//tbody/tr/td/label")
+    public List<WebElement> columnNames;
 
     @FindBy(xpath = "//span[@class='column-filter-match']")
     public WebElement getQuickSearchResult;
 
 
-    @FindBy(xpath = "//label[@for='column-c469']")
-    public WebElement id;
 
-    @FindBy(xpath = "//label[@for='column-c470']")
-    public WebElement licensePlate;
-
-    @FindBy(xpath = "//label[@for='column-c471']")
-    public WebElement Tags;
-
-    @FindBy(xpath = "//label[@for='column-c472']")
-    public WebElement driverr;
-
-    @FindBy(xpath = "//label[@for='column-c473']")
-    public WebElement location;
-
-    @FindBy(xpath = "//label[@for='column-c474']")
-    public WebElement chassisNumber;
-
-    @FindBy(xpath = "//label[@for='column-c475']")
-    public WebElement modelYear;
-
-    @FindBy(xpath = "//label[@for='column-c476']")
-    public WebElement lastOdometer;
-
-    @FindBy(xpath = "//label[@for='column-c477']")
-    public WebElement immatriculationDate;
-
-    @FindBy(xpath = "//label[@for='column-c478']")
-    public WebElement firstContractDate;
-
-    @FindBy(xpath = "//label[@for='column-c479']")
-    public WebElement catalogValue;
-
-    @FindBy(xpath = "//label[@for='column-c480']")
-    public WebElement seatsNumber;
-
-    @FindBy(xpath = "//label[@for='column-c481']")
-    public WebElement doorsNumber;
-
-    @FindBy(xpath = "//label[@for='column-c482']")
-    public WebElement color;
-
-    @FindBy(xpath = "//label[@for='column-c483']")
-    public WebElement transmission;
-
-    @FindBy(xpath = "//label[@for='column-c484']")
-    public WebElement fuelType;
-
-    @FindBy(xpath = "//label[@for='column-c485']")
-    public WebElement co2Emmisions;
-
-    @FindBy(xpath = "//label[@for='column-c486']")
-    public WebElement horsePower;
-
-    @FindBy(xpath = "//label[@for='column-c487']")
-    public WebElement horsePowerTaxation;
-
-    @FindBy(xpath = "//label[@for='column-c488']")
-    public WebElement power;
 
 
 
@@ -228,6 +166,43 @@ public class VehiclesPage extends BasePage {
     }
 
 
+
+    @FindBy(xpath = "//tbody/tr/td/label")
+    public List<WebElement> gridColumnNames;
+
+   // @FindBy(xpath = "//label[@for='column-c469']")
+   // public WebElement idCheckBox;
+
+    @FindBy(xpath = "//label[@for='column-c470']")
+    public WebElement licensePlateCheckBox;
+
+    @FindBy(xpath = "//label[@for='column-c471']")
+    public WebElement tagsCheckBox;
+
+    @FindBy(xpath = "//label[@for='column-c472']")
+    public WebElement driverCheckBox;
+
+
+   public WebElement gridHeaderCell(String name){
+       return Driver.getDriver().findElement(By.xpath("(//span[contains(text(),'"+name+"')])[1]"));
+   }
+
+   @FindBy(xpath = "(//span[@class='grid-header-cell__label'])[1]")
+   public WebElement firstGridHeaderCell;
+
+    @FindBy(xpath = "(//span[@class='grid-header-cell__label'])[2]")
+    public WebElement secondGridHeaderCell;
+
+
+
+   @FindBy(xpath = "(//span[@title='Move column'])[2]")
+    public WebElement licensePlateSortButton;
+
+    @FindBy(xpath = "(//span[@title='Move column'])[3]")
+    public WebElement tagsSortButton;
+
+
+
     @FindBy(xpath = "//tbody[@class='grid-body']/tr[1]/td[1]")
     public WebElement firstLicensePlateCell;
 
@@ -239,6 +214,7 @@ public class VehiclesPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='btn filter-criteria-selector oro-drop-opener oro-dropdown-toggle filter-default-value']")
     public WebElement driverFilterShownButton;
+
 
 
 }
