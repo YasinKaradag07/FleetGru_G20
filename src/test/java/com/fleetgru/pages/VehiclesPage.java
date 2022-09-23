@@ -170,10 +170,10 @@ public class VehiclesPage extends BasePage {
     @FindBy(xpath = "//div/table/tbody/tr[1]/td[21]/div/div/a")
     public WebElement managerThreeDotsIcon;
 
-    @FindBy(xpath = "//div/table/tbody/tr[1]/td[20]/div/div/ul/li/ul/li[1]/a/i")
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div[1]/div[2]/div[3]/div[3]/div[2]/div[2]/div[2]/div/table/tbody/tr[1]/td[20]/div/div/ul/li/ul/li[1]/a/i")
     public WebElement driverEyeIcon;
 
-    @FindBy(xpath = "//div/table/tbody/tr[1]/td[21]/div/div/ul/li/ul/li[1]/a/i")
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div[1]/div[2]/div[3]/div[3]/div[2]/div[2]/div[2]/div/table/tbody/tr[1]/td[21]/div/div/ul/li/ul/li[1]/a/i")
     public WebElement managerEyeIcon;
 
     @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div[1]/div/div/div[1]/div[1]/div[1]/a")

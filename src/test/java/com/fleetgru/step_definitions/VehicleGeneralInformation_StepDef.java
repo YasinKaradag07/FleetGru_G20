@@ -5,8 +5,11 @@ import com.fleetgru.utilities.*;
 import io.cucumber.java.en.*;
 import org.junit.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.*;
 
-public class VehicleGeneralInformation_StepDef {
+
+
+public class VehicleGeneralInformation_StepDef{
 
     LoginPage loginPage = new LoginPage();
     VehiclesPage vehiclesPage = new VehiclesPage();
@@ -59,18 +62,22 @@ public class VehicleGeneralInformation_StepDef {
 
     @And("user clicks on the Eye \\(View) icon as {string}")
     public void userClicksOnTheEyeViewIconAs(String arg0) {
+        Actions action = new Actions(Driver.getDriver());
 
         if(arg0.equals("Driver")){
-            vehiclesPage.driverThreeDotsIcon.click();
-            vehiclesPage.driverThreeDotsIcon.click();
-            BrowserUtils.sleep(2);
-            vehiclesPage.driverEyeIcon.click();
+
+            action.moveToElement(vehiclesPage.driverThreeDotsIcon).perform();
+            action.moveToElement(vehiclesPage.driverEyeIcon).click().perform();
+
+            //((JavascriptExecutor) Driver.getDriver()).executeScript("return arguments[0].click();", vehiclesPage.driverEyeIcon);
         }
         else{
-            vehiclesPage.managerThreeDotsIcon.click();
-            vehiclesPage.managerThreeDotsIcon.click();
-            BrowserUtils.sleep(2);
-            vehiclesPage.managerEyeIcon.click();
+
+            action.moveToElement(vehiclesPage.managerThreeDotsIcon).perform();
+            action.moveToElement(vehiclesPage.managerEyeIcon).perform();
+
+            //((JavascriptExecutor) Driver.getDriver()).executeScript("return arguments[0].click();", vehiclesPage.managerEyeIcon);
+
         }
         Assert.assertTrue(vehiclesPage.generalInfoPage.isDisplayed());
     }
