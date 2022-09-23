@@ -101,6 +101,7 @@ public class VehicleGeneralInformation_StepDef{
             Assert.assertEquals(firstDriverLocation,vehiclesPage.firstDriverLocationName.getText());
         }
         else{
+            //dsafdassdfasdfasdf
             Assert.assertEquals(firstManagerTag,vehiclesPage.firstManagerTagName.getText());
             Assert.assertEquals(firstManagerLocation,vehiclesPage.firstManagerLocationName.getText());
         }
